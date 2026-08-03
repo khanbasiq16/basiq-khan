@@ -26,7 +26,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-import { SiHtml5, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiShopify, SiTailwindcss, SiTypescript, SiWordpress } from "react-icons/si";
+import { SiHtml5, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/ui/counter";
