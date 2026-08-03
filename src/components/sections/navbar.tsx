@@ -111,7 +111,7 @@ export function Navbar() {
             aria-label="Primary"
             className={cn(
               "relative flex h-[60px] items-center justify-between gap-6 rounded-2xl px-4 transition-all duration-500 ease-premium sm:px-5",
-              scrolled || pathname !== "/"
+              scrolled
                 ? "glass shadow-glass"
                 : "border border-transparent bg-transparent"
             )}

@@ -350,9 +350,8 @@ function CmsEditorMockup() {
                 </span>
                 <span className="flex-1 truncate text-[0.82rem] font-semibold text-ink">{row.label}</span>
                 <span
-                  className={`shrink-0 rounded-full px-2.5 py-1 text-[0.65rem] font-bold ${
-                    row.status === "Published" ? "bg-emerald-50 text-emerald-600" : "bg-amber-50 text-amber-600"
-                  }`}
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-[0.65rem] font-bold ${row.status === "Published" ? "bg-emerald-50 text-emerald-600" : "bg-amber-50 text-amber-600"
+                    }`}
                 >
                   {row.status}
                 </span>
@@ -561,7 +560,7 @@ export default function CmsDevelopmentPage() {
                 <Badge icon={<Star className="size-3.5 fill-current" />}>Premium CMS Development</Badge>
               </Reveal>
 
-              <h1 className="mt-7 font-display text-[clamp(1.3rem,6.75vw,2.35rem)] font-black leading-[1.05] tracking-[-0.02em] text-ink balance sm:text-display-xl">
+              <h1 className="mt-7 font-display text-[clamp(1rem,3vw,2.1rem)] font-black leading-[1.05] tracking-[-0.02em] text-ink balance sm:text-[clamp(1.8rem,2.8vw,2.5rem)]">
                 <TextReveal text="Powerful CMS Websites" />
                 <br />
                 <TextReveal text="That Are" delay={0.06} />{" "}
