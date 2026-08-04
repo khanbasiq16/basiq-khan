@@ -333,7 +333,7 @@ export default function ApiIntegrationPage() {
                 <Badge>API Integration</Badge>
               </Reveal>
 
-              <h1 className="mt-6 font-display text-display-xl text-ink balance">
+              <h1 className="mt-6 font-display text-[clamp(1rem,5.4vw,2.2rem)] font-black leading-[1.05] tracking-[-0.02em] text-ink balance sm:text-[2.15rem] lg:text-[clamp(1.6rem,2.5vw,2.4rem)]">
                 <TextReveal text="Seamless API Integrations" />
                 <br />
                 <TextReveal text="That Power Your Digital" delay={0.08} />
