@@ -59,7 +59,16 @@ const accentTones: Record<Service["tone"], string> = {
   orange: "bg-orange-50 text-orange-600",
 };
 
-const dedicatedRoutes = ["web-development", "ui-ux-design", "web-applications", "cms-development", "api-integration"];
+const dedicatedRoutes = [
+  "web-development",
+  "ui-ux-design",
+  "web-applications",
+  "cms-development",
+  "api-integration",
+  "ai-integration",
+  "performance-optimization",
+  "maintenance-support",
+];
 
 export function generateStaticParams() {
   // These slugs have their own dedicated route (services/<slug>/page.tsx) with a

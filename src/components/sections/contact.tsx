@@ -18,10 +18,11 @@ const details = [
   // { icon: Clock, label: "Availability", value: site.availability },
 ];
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,14 +31,25 @@ export function Contact() {
     const payload = Object.fromEntries(new FormData(form).entries());
 
     try {
-      // Swap this for your own endpoint (Resend, Formspree, a route handler…).
-      await new Promise((r) => setTimeout(r, 1100));
-      console.info("Contact submission", payload);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
       setStatus("sent");
       form.reset();
       window.setTimeout(() => setStatus("idle"), 5000);
-    } catch {
-      setStatus("idle");
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setStatus("error");
+      window.setTimeout(() => setStatus("idle"), 5000);
     }
   }
 
@@ -183,7 +195,13 @@ export function Contact() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <Button type="submit" size="lg" magnetic={6} disabled={status !== "idle"} className="w-full sm:w-auto">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    magnetic={6}
+                    disabled={status === "sending" || status === "sent"}
+                    className="w-full sm:w-auto"
+                  >
                     {status === "sending" ? (
                       <>
                         <Loader2 className="size-5 animate-spin" /> Sending…
@@ -209,6 +227,17 @@ export function Contact() {
                         className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-[0.85rem] font-medium text-emerald-700"
                       >
                         Thanks — your message is in. I&apos;ll reply to your inbox within one business day.
+                      </motion.p>
+                    )}
+                    {status === "error" && (
+                      <motion.p
+                        role="status"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-[0.85rem] font-medium text-red-700"
+                      >
+                        {errorMessage}
                       </motion.p>
                     )}
                   </AnimatePresence>

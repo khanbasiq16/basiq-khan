@@ -133,6 +133,33 @@ export function LaptopMockup({
   );
 }
 
+export function DesktopMockup({
+  className,
+  screen,
+}: {
+  className?: string;
+  /** Overrides the default fake SaaS dashboard with custom screen content. */
+  screen?: React.ReactNode;
+}) {
+  return (
+    <div className={cn("relative mx-auto w-full", className)} aria-hidden>
+      {/* screen */}
+      <div className="rounded-[18px] border border-hairline bg-[#0B1020] p-[9px] shadow-float sm:rounded-[22px] sm:p-[12px]">
+        <div className="aspect-[16/10] overflow-hidden rounded-[9px] sm:rounded-[12px]">
+          {screen ?? <DashboardUI />}
+        </div>
+      </div>
+      {/* stand */}
+      <div
+        className="relative mx-auto h-[30px] w-[84px] bg-gradient-to-b from-[#E8EBF3] to-[#C9CFDE] sm:h-[38px] sm:w-[104px]"
+        style={{ clipPath: "polygon(38% 0%, 62% 0%, 76% 100%, 24% 100%)" }}
+      />
+      <div className="mx-auto h-[10px] w-[42%] rounded-full bg-gradient-to-b from-[#E8EBF3] to-[#C9CFDE] shadow-soft sm:h-[12px]" />
+      <div className="mx-auto h-[6px] w-[34%] rounded-b-[40px] bg-black/[0.06] blur-[3px]" />
+    </div>
+  );
+}
+
 export function PhoneMockup({
   className,
   screen,

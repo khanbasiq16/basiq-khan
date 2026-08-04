@@ -3,14 +3,19 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
+  Activity,
   ClipboardCheck,
   Code2,
   FileText,
+  Gauge,
   Headphones,
   Palette,
   Pencil,
+  RefreshCw,
   Rocket,
   Search,
+  UploadCloud,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -26,6 +31,11 @@ const icons: Record<string, LucideIcon> = {
   Headphones,
   Palette,
   FileText,
+  Activity,
+  RefreshCw,
+  UploadCloud,
+  Gauge,
+  Wrench,
 };
 
 /** Only counts with a matching entry get their own column count on lg+; others fall back to 6. */
