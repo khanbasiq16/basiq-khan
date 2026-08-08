@@ -12,7 +12,6 @@ const fieldBase =
   "w-full rounded-xl border border-hairline bg-white px-4 py-3 text-[0.92rem] text-ink shadow-soft outline-none transition-all duration-300 placeholder:text-ink-faint focus:border-brand-400 focus:ring-4 focus:ring-brand-500/10";
 
 const details = [
-  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
   { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/[^+\d]/g, "")}` },
   { icon: MapPin, label: "Location", value: site.location },
   // { icon: Clock, label: "Availability", value: site.availability },
@@ -76,6 +75,27 @@ export function Contact() {
             </Reveal>
 
             <ul className="mt-10 flex flex-col gap-3">
+              <Reveal direction="up" delay={0.2}>
+                <div className="card-surface group flex items-center gap-4 p-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-500 transition-colors duration-400 group-hover:bg-brand-500 group-hover:text-white">
+                    <Mail className="size-[18px]" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[0.72rem] font-semibold uppercase tracking-wider text-ink-faint">
+                      Email
+                    </span>
+                    {site.emails.map((email) => (
+                      <a
+                        key={email}
+                        href={`mailto:${email}`}
+                        className="block truncate text-[0.95rem] font-semibold text-ink hover:text-brand-600"
+                      >
+                        {email}
+                      </a>
+                    ))}
+                  </span>
+                </div>
+              </Reveal>
               {details.map((d, i) => {
                 const Icon = d.icon;
                 const content = (
@@ -92,7 +112,7 @@ export function Contact() {
                   </>
                 );
                 return (
-                  <Reveal key={d.label} direction="up" delay={0.2 + i * 0.07}>
+                  <Reveal key={d.label} direction="up" delay={0.27 + i * 0.07}>
                     {d.href ? (
                       <a href={d.href} className="card-surface group flex items-center gap-4 p-4">
                         {content}

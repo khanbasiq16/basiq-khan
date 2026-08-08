@@ -100,11 +100,14 @@ export function Footer() {
           <Reveal direction="up" delay={0.18}>
             <h3 className="text-[0.95rem] font-bold text-ink">Contact Info</h3>
             <ul className="mt-5 flex flex-col gap-3.5 text-[0.88rem] text-ink-muted">
-              <li>
-                <a href={`mailto:${site.email}`} className="flex items-start gap-2.5 hover:text-brand-600">
-                  <Mail className="mt-0.5 size-4 shrink-0 text-brand-400" /> {site.email}
-                </a>
-              </li>
+              {site.emails.map((email) => (
+                <li key={email} className="min-w-0">
+                  <a href={`mailto:${email}`} className="flex min-w-0 items-start gap-2.5 hover:text-brand-600">
+                    <Mail className="mt-0.5 size-4 shrink-0 text-brand-400" />
+                    <span className="min-w-0 break-all">{email}</span>
+                  </a>
+                </li>
+              ))}
               <li>
                 <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="flex items-start gap-2.5 hover:text-brand-600">
                   <Phone className="mt-0.5 size-4 shrink-0 text-brand-400" /> {site.phone}

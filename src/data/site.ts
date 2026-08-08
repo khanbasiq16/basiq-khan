@@ -3,6 +3,7 @@ export const site = {
   role: "Full Stack Developer",
   url: "https://basiqkhan.dev",
   email: "basiqkhan@proton.me",
+  emails: ["basiqkhan@proton.me", "muhammadbasiqkhan@outlook.com"],
   phone: "+92 3460840491",
   location: "Karachi, Pakistan",
   calendly: "https://cal.com/basiqkhan/intro",
